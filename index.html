@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Après le Lien - Accompagnement Dossier Succession</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #4a5d23;
+            --dark-green: #3d4d1c;
+            --light-green: #5a7028;
+            --cream: #f5f3eb;
+            --beige: #e8e4d9;
+            --text-dark: #2d3a1a;
+            --text-medium: #5c6b4a;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .logo-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        .logo-text span {
+            font-size: 0.7rem;
+            color: var(--text-medium);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-green);
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-green);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-dark);
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 80vh;
+            background: var(--cream);
+        }
+
+        .hero-content {
+            padding: 5rem 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.75rem;
+            line-height: 1.2;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            margin-bottom: 2rem;
+            max-width: 450px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .hero-image {
+            background: url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800') center/cover;
+            min-height: 400px;
+        }
+
+        .features {
+            padding: 4rem 5%;
+            background: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--primary-green);
+            font-size: 1.5rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+        }
+
+        .services {
+            padding: 5rem 5%;
+            background: var(--cream);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--text-dark);
+        }
+
+        .section-title .leaf {
+            color: var(--primary-green);
+            font-size: 1.5rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            border: 2px solid var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary-green);
+            font-size: 1.75rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+        }
+
+        .how-it-works {
+            padding: 5rem 5%;
+            background: var(--white);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--beige);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--primary-green);
+            font-size: 1.75rem;
+            position: relative;
+            background: var(--white);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 28px;
+            height: 28px;
+            background: var(--primary-green);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .step h3 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            font-size: 0.85rem;
+            color: var(--text-medium);
+        }
+
+        footer {
+            background: var(--beige);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr 1fr;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .footer-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary-green);
+            line-height: 1.4;
+            font-style: italic;
+        }
+
+        .footer-about h3,
+        .footer-contact h3 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .footer-about p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+        }
+
+        .footer-contact a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-medium);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-contact a:hover {
+            color: var(--primary-green);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            font-size: 0.85rem;
+            color: var(--text-medium);
+        }
+
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                order: -1;
+                min-height: 300px;
+            }
+
+            .features-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-icon">🏠</div>
+            <div class="logo-text">
+                <h1>Après le Lien</h1>
+                <span>Accompagnement Dossier Succession</span>
+            </div>
+        </div>
+        <nav>
+            <a href="#accueil">Accueil</a>
+            <a href="#demarche">Démarche</a>
+            <a href="#services">Services</a>
+            <a href="#apropos">À propos</a>
+            <a href="#contact">Contact</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeCEqwwaZpjoV56HbmL9tkMF1fxgOTgdAjoTdTv3-d1GXnLdg/viewform?usp=dialog" target="_blank" class="btn-primary">Accéder au questionnaire</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <h2>Un accompagnement administratif humain, clair et sans stress.</h2>
+            <p>Je vous aide à préparer votre dossier de succession pour le transmettre au notaire, simplement et sereinement.</p>
+            <div class="hero-buttons">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeCEqwwaZpjoV56HbmL9tkMF1fxgOTgdAjoTdTv3-d1GXnLdg/viewform?usp=dialog" target="_blank" class="btn-primary">Accéder au questionnaire</a>
+                <a href="#demarche" class="btn-secondary">En savoir plus</a>
+            </div>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <section class="features" id="demarche">
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">📜</div>
+                <div>
+                    <h3>Sans conseil juridique</h3>
+                    <p>Un accompagnement administratif uniquement, sans me substituer au notaire.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💚</div>
+                <div>
+                    <h3>À vos côtés</h3>
+                    <p>Une aide bienveillante pour comprendre et préparer chaque étape.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔒</div>
+                <div>
+                    <h3>Confidentiel et sécurisé</h3>
+                    <p>Vos informations sont traitées avec la plus grande discrétion et sécurité.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Mes services</h2>
+            <div class="leaf">🌿</div>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>Préparation du dossier de succession</h3>
+                <p>Questionnaire personnalisé, liste des documents, explications claires et vérification du dossier selon votre situation.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🤝</div>
+                <h3>Accompagnement personnalisé</h3>
+                <p>Échanges, conseils pratiques et aide à la compréhension des démarches pour un dossier complet.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✉️</div>
+                <h3>Suivi après le rendez-vous notaire</h3>
+                <p>Réponses à vos questions, aide pour les demandes d'organismes et documents complémentaires.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="section-title">
+            <h2>Comment ça marche ?</h2>
+            <div class="leaf">🌿</div>
+        </div>
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-icon">
+                    <span class="step-number">1</span>
+                    📝
+                </div>
+                <h3>Répondez</h3>
+                <p>à un questionnaire simple en ligne sur votre situation.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">
+                    <span class="step-number">2</span>
+                    📄
+                </div>
+                <h3>Recevez</h3>
+                <p>la liste personnalisée des documents à réunir.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">
+                    <span class="step-number">3</span>
+                    📁
+                </div>
+                <h3>Préparez</h3>
+                <p>votre dossier avec mon aide pour qu'il soit complet et clair.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">
+                    <span class="step-number">4</span>
+                    ✅
+                </div>
+                <h3>Gagnez du temps</h3>
+                <p>et évitez les allers-retours inutiles chez le notaire.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-quote">
+                « Moins de stress, plus de clarté, un dossier prêt en toute sérénité. »
+            </div>
+            <div class="footer-about" id="apropos">
+                <h3>À propos</h3>
+                <p>Je me positionne comme un soutien administratif de confiance, à l'écoute et organisé, pour aider les familles à préparer sereinement leur dossier de succession et faciliter leurs démarches chez le notaire.</p>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <a href="mailto:apreslelien@outlook.fr">✉️ apreslelien@outlook.fr</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            2026 Après le Lien - Tous droits réservés
+        </div>
+    </footer>
+</body>
+</html>
